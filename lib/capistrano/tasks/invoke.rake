@@ -5,7 +5,7 @@ namespace :invoke do
     if ENV['TASK']
       on roles(:app) do
         within current_path do
-          with rails_env: fetch(:rails_env) do
+          with rack_env: fetch(:stage) do
             execute :rake, ENV['TASK']
           end
         end
@@ -18,4 +18,3 @@ namespace :invoke do
   end
 
 end
-
